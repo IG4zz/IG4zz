@@ -13,14 +13,20 @@ namespace CaesarCipher
             InitializeComponent();
             KeyPreview = true;
         }
-        bool ValidCharFound(string str)//функция проверки наличия только символовцифр и , в //строке
+
+        /// <summary>
+        /// Функция проверки наличия только символов и цифр в строке
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        bool ValidCharFound(string str)//
         {
             bool valid = true;// 
            
                  foreach (char c in str) // искать символ c в строке str
                  {
-                    string bfr = c.ToString();
-                     if (Regex.IsMatch(bfr, @"[-0-9,]"))
+                    string Temp = c.ToString();
+                     if (Regex.IsMatch(Temp, @"[-0-9,]"))
                      {
                        valid = true;//то результат=истина
                      }
@@ -32,38 +38,51 @@ namespace CaesarCipher
                  }
                   return valid;
         }
+
+        /// <summary>
+        /// Нажатие кнопки Зашифровать
+        /// Зашифровывает текст из поля Дешифрованный текст
+        /// и переносит полученный текст в поле Зашифрованный текст
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonEncrypt_Click(object sender, EventArgs e)
         {
             if (textBoxKey.Text != null && textBoxKey.Text != "")
             {
                 if (ValidCharFound(textBoxKey.Text))
                 {
-                    int Key = Convert.ToInt32(textBoxKey.Text); //(Ключ должен быть в пределах значений алфавита)
+                    int Key = Convert.ToInt32(textBoxKey.Text); //  (Ключ должен быть в пределах значений алфавита)
                     if (Key > -33 && Key < 33)
                     {
-                        string Text = Convert.ToString(textBoxDecryptText.Text.ToLower()); // храню фразу, которую буду шифровать
-                        string Crypt = ""; // храню результат шифрования
+                        string Text = Convert.ToString(textBoxDecryptText.Text.ToLower()); //   храню фразу, которую буду шифровать
+                        string Crypt = ""; //   храню результат шифрования
                         string Space = " ";
                         string Comma = ",";
                         string Dot = ".";
                         string Dash = "-";
                         string ExclamationMark = "!";
                         string QuestionMark = "?";
-                        string RusAlphabet = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя"; // работаю с русским алфавитом
-                        for (int i = 0; i < Text.Length; i++) // цикл перебора букв шифруемого слова
-                        {
-                            for (int j = 0; j < RusAlphabet.Length; j++) // цикл сравнения каждой буквы с алфавитом
-                            {
-                                if (Text[i] == RusAlphabet[j]) // в случае совпадения, создаю переменную, где храню номер буквы со сдвигом
-                                {
-                                    int end_position = j + Key; // номер буквы + сдвиг по ключу
+                        string RusAlphabet = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя"; //  русский алфавит
 
-                                    while (end_position <= RusAlphabet.Length) // чтобы новая буква не уходила за рамки алфавита
+                        //    цикл перебора букв шифруемого слова
+
+                        for (int i = 0; i < Text.Length; i++) 
+                        {
+                            // цикл сравнения каждой буквы с алфавитом
+
+                            for (int j = 0; j < RusAlphabet.Length; j++) 
+                            {
+                                if (Text[i] == RusAlphabet[j]) //   в случае совпадения, создаю переменную, где храню номер буквы со сдвигом
+                                {
+                                    int end_position = j + Key; //  номер буквы + сдвиг по ключу
+
+                                    while (end_position <= RusAlphabet.Length) //   проверка того, чтобы новая буква не уходила за рамки алфавита
                                     {
                                         end_position += RusAlphabet.Length;
                                     }
 
-                                    while (end_position >= RusAlphabet.Length) // чтобы новая буква не уходила за рамки алфавита
+                                    while (end_position >= RusAlphabet.Length) // проверка того, чтобы новая буква не уходила за рамки алфавита
                                     {
                                         end_position -= RusAlphabet.Length;
                                     }
@@ -119,11 +138,23 @@ namespace CaesarCipher
                 MessageBox.Show("Значение Ключа шифрования отсутствует!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        /// <summary>
+        /// Нажатие кнопки Выход
+        /// Производит выход из программы
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
+        /// <summary>
+        /// Нажатие кнопки Справка
+        /// Открывает окно со справочной информацией
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonHelp_Click(object sender, EventArgs e)
         {
            
@@ -131,6 +162,12 @@ namespace CaesarCipher
             formHelp.Show();
         }
 
+        /// <summary>
+        /// Нажатие клавиши F1
+        /// Открывает окно со справочной информацией
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void buttonHelp_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.F1)
@@ -140,6 +177,13 @@ namespace CaesarCipher
             }
         }
 
+        /// <summary>
+        /// Нажатие кнопки Дешифровать
+        /// Расшифровывает текст из поля Зашифрованный текст
+        /// и переносит полученный текст в поле Дешифрованный текст
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonDecrypt_Click(object sender, EventArgs e)
         {
             if (textBoxKey.Text != null && textBoxKey.Text != "")
@@ -157,15 +201,20 @@ namespace CaesarCipher
                       string Dash = "-";
                       string ExclamationMark = "!";
                       string QuestionMark = "?";
-                      string RusAlphabet = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя"; // работаю с русским алфавитом
+                      string RusAlphabet = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя"; // русский алфавит
 
-                      for (int i = 0; i < Text.Length; i++) // цикл перебора букв шифруемого слова
-                      {
-                        for (int j = 0; j < RusAlphabet.Length; j++) // цикл сравнения каждой буквы с алфавитом
-                        {
-                           if (Text[i] == RusAlphabet[j]) // в случае совпадения, создаю переменную, где храню номер буквы со сдвигом
-                           {
-                            int end_position = j - Key; // номер буквы + сдвиг по ключу
+                      // цикл перебора букв шифруемого слова
+
+                       for (int i = 0; i < Text.Length; i++) 
+                       {
+                            // цикл сравнения каждой буквы с алфавитом
+
+                            for (int j = 0; j < RusAlphabet.Length; j++) 
+                            {
+
+                                if (Text[i] == RusAlphabet[j]) // в случае совпадения, создаю переменную, где храню номер буквы со сдвигом
+                                {
+                                    int end_position = j - Key; // номер буквы + сдвиг по ключу
 
                                     while (end_position <= RusAlphabet.Length) // чтобы новая буква не уходила за рамки алфавита
                                     { 
@@ -177,9 +226,9 @@ namespace CaesarCipher
                                       end_position -= RusAlphabet.Length; 
                                     }
 
-                              Crypt +=RusAlphabet[end_position]; // заношу зашифрованную букву в переменную, для ее хранения
-                           }
-                        }
+                                    Crypt +=RusAlphabet[end_position]; // заношу зашифрованную букву в переменную, для ее хранения
+                                }
+                            }
 
                             if (Text[i] == Convert.ToChar(Space))
                             {
@@ -210,8 +259,9 @@ namespace CaesarCipher
                             {
                                 Crypt += QuestionMark;
                             }
-                      }
-                      textBoxDecryptText.Text = Crypt;
+                       }
+
+                       textBoxDecryptText.Text = Crypt;
                     }
                     else
                         MessageBox.Show("Некорректное значение ключа шифрования!" +
@@ -224,22 +274,47 @@ namespace CaesarCipher
             else
                 MessageBox.Show("Значение Ключа шифрования отсутствует!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+
+        /// <summary>
+        /// Нажатие кнопки Очистить поле(Дешифрованный текст)
+        /// Очищает поле Дешифрованный текст
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonClearEncryptText_Click(object sender, EventArgs e)
         {
             textBoxEncryptText.Text = "";
         }
 
+        /// <summary>
+        /// Нажатие кнопки Очистить поле(Зашифрованный текст)
+        /// Очищает поле Зашифрованный текст
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonClearDecryptText_Click(object sender, EventArgs e)
         {
             textBoxDecryptText.Text = "";
         }
 
+        /// <summary>
+        /// Нажатие кнопки Сохранить(Дешифрованный текст)
+        /// Сохраняет текст из поля Дешифрованный текст в текстовый файл
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonSaveDecryptText_Click(object sender, EventArgs e)
         {
             saveFileDialog1.ShowDialog();
             File.WriteAllText(saveFileDialog1.FileName, textBoxDecryptText.Text);
         }
 
+        /// <summary>
+        /// Нажатие кнопки Сохранить(Зашифрованный текст)
+        /// Сохраняет текст из поля Зашифрованный текст в текстовый файл
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonSaveEncryptText_Click_1(object sender, EventArgs e)
         {
             saveFileDialog1.ShowDialog();
@@ -247,6 +322,13 @@ namespace CaesarCipher
            
         }
 
+        /// <summary>
+        /// Нажатие кнопки Открыть(Дешифрованный текст)
+        /// Открывает диалоговое окно выбора текстового файла
+        /// и переносит текст из него в поле Дешифрованный текст
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonOpenDecryptText_Click(object sender, EventArgs e)
         {
             try
@@ -262,6 +344,13 @@ namespace CaesarCipher
             }
         }
 
+        /// <summary>
+        /// Нажатие кнопки Открыть(Зашифрованный текст)
+        /// Открывает диалоговое окно выбора текстового файла
+        /// и переносит текст из него в поле Зашифрованный текст
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonOpenEncryptText_Click(object sender, EventArgs e)
         {
             try
