@@ -23,16 +23,16 @@ namespace CaesarCipher
         {
             bool valid = true;// 
            
-                 foreach (char c in str) // искать символ c в строке str
+                 foreach (char c in str)    //  искать символ c в строке str
                  {
                     string Temp = c.ToString();
                      if (Regex.IsMatch(Temp, @"[-0-9,]"))
                      {
-                       valid = true;//то результат=истина
+                       valid = true;    //  то результат=истина
                      }
                      else
                      {
-                    valid = false;//иначе ложь
+                    valid = false;  //  иначе ложь
                     break;
                      }
                  }
@@ -41,7 +41,7 @@ namespace CaesarCipher
 
         /// <summary>
         /// Нажатие кнопки Зашифровать
-        /// Зашифровывает текст из поля Дешифрованный текст
+        /// Шифрует текст из поля Дешифрованный текст
         /// и переносит полученный текст в поле Зашифрованный текст
         /// </summary>
         /// <param name="sender"></param>
@@ -75,19 +75,19 @@ namespace CaesarCipher
                             {
                                 if (Text[i] == RusAlphabet[j]) //   в случае совпадения, создаю переменную, где храню номер буквы со сдвигом
                                 {
-                                    int end_position = j + Key; //  номер буквы + сдвиг по ключу
+                                    int EndPosition = j + Key; //  номер буквы + сдвиг по ключу
 
-                                    while (end_position <= RusAlphabet.Length) //   проверка того, чтобы новая буква не уходила за рамки алфавита
+                                    while (EndPosition <= RusAlphabet.Length) //   проверка того, чтобы новая буква не уходила за рамки алфавита
                                     {
-                                        end_position += RusAlphabet.Length;
+                                        EndPosition += RusAlphabet.Length;
                                     }
 
-                                    while (end_position >= RusAlphabet.Length) // проверка того, чтобы новая буква не уходила за рамки алфавита
+                                    while (EndPosition >= RusAlphabet.Length) // проверка того, чтобы новая буква не уходила за рамки алфавита
                                     {
-                                        end_position -= RusAlphabet.Length;
+                                        EndPosition -= RusAlphabet.Length;
                                     }
 
-                                    Crypt += RusAlphabet[end_position]; // заношу зашифрованную букву в переменную, для ее хранения
+                                    Crypt += RusAlphabet[EndPosition]; // заношу зашифрованную букву в переменную, для ее хранения
                                 }
                             }
 
@@ -179,7 +179,7 @@ namespace CaesarCipher
 
         /// <summary>
         /// Нажатие кнопки Дешифровать
-        /// Расшифровывает текст из поля Зашифрованный текст
+        /// Дешифрует текст из поля Зашифрованный текст
         /// и переносит полученный текст в поле Дешифрованный текст
         /// </summary>
         /// <param name="sender"></param>
@@ -214,19 +214,19 @@ namespace CaesarCipher
 
                                 if (Text[i] == RusAlphabet[j]) // в случае совпадения, создаю переменную, где храню номер буквы со сдвигом
                                 {
-                                    int end_position = j - Key; // номер буквы + сдвиг по ключу
+                                    int EndPosition = j - Key; // номер буквы + сдвиг по ключу
 
-                                    while (end_position <= RusAlphabet.Length) // чтобы новая буква не уходила за рамки алфавита
-                                    { 
-                                      end_position += RusAlphabet.Length; 
+                                    while (EndPosition <= RusAlphabet.Length) // чтобы новая буква не уходила за рамки алфавита
+                                    {
+                                        EndPosition += RusAlphabet.Length; 
                                     }
   
-                                    while (end_position >= RusAlphabet.Length) // чтобы новая буква не уходила за рамки алфавита
+                                    while (EndPosition >= RusAlphabet.Length) // чтобы новая буква не уходила за рамки алфавита
                                     {
-                                      end_position -= RusAlphabet.Length; 
+                                        EndPosition -= RusAlphabet.Length; 
                                     }
 
-                                    Crypt +=RusAlphabet[end_position]; // заношу зашифрованную букву в переменную, для ее хранения
+                                    Crypt +=RusAlphabet[EndPosition]; // заношу зашифрованную букву в переменную, для ее хранения
                                 }
                             }
 
@@ -331,14 +331,14 @@ namespace CaesarCipher
         /// <param name="e"></param>
         private void buttonOpenDecryptText_Click(object sender, EventArgs e)
         {
-            try
+            try     //  если программа не сможет получить файл
             {
                 openFileDialog1.ShowDialog();
                 textBoxInput.Text = openFileDialog1.FileName;
                 textBoxDecryptText.Clear();
                 textBoxDecryptText.Text = File.ReadAllText(textBoxInput.Text, Encoding.GetEncoding(65001));
             }
-            catch
+            catch (Exception)   //  то выведет сообщение на экран
             {
                 MessageBox.Show("Текстовый документ отсутствует", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -353,14 +353,14 @@ namespace CaesarCipher
         /// <param name="e"></param>
         private void buttonOpenEncryptText_Click(object sender, EventArgs e)
         {
-            try
+            try     //  если программа не сможет получить файл
             {
                 openFileDialog1.ShowDialog();
                 textBoxOutput.Text = openFileDialog1.FileName;
                 textBoxEncryptText.Clear();
                 textBoxEncryptText.Text = File.ReadAllText(textBoxOutput.Text, Encoding.GetEncoding(65001));
             }
-            catch
+            catch (Exception)   //  то выведет сообщение на экран
             {
                 MessageBox.Show("Текстовый документ отсутствует", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

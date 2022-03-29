@@ -50,7 +50,6 @@ namespace CaesarCipher
             this.textBoxInput = new System.Windows.Forms.TextBox();
             this.textBoxOutput = new System.Windows.Forms.TextBox();
             this.buttonOpenEncryptText = new System.Windows.Forms.Button();
-            this.saveFileDialog2 = new System.Windows.Forms.SaveFileDialog();
             this.SuspendLayout();
             // 
             // buttonEncrypt
@@ -158,6 +157,8 @@ namespace CaesarCipher
             // 
             // openFileDialog1
             // 
+            this.openFileDialog1.Filter = "Текстовые файлы (*.txt)|*.txt";
+            this.openFileDialog1.FilterIndex = 2;
             this.openFileDialog1.ReadOnlyChecked = true;
             // 
             // saveFileDialog1
@@ -165,6 +166,8 @@ namespace CaesarCipher
             this.saveFileDialog1.CreatePrompt = true;
             this.saveFileDialog1.DefaultExt = "txt";
             this.saveFileDialog1.FileName = "Шифр";
+            this.saveFileDialog1.Filter = "Текстовые файлы (*.txt)|*.txt";
+            this.saveFileDialog1.FilterIndex = 2;
             this.saveFileDialog1.RestoreDirectory = true;
             this.saveFileDialog1.SupportMultiDottedExtensions = true;
             // 
@@ -234,13 +237,6 @@ namespace CaesarCipher
             this.buttonOpenEncryptText.UseVisualStyleBackColor = true;
             this.buttonOpenEncryptText.Click += new System.EventHandler(this.buttonOpenEncryptText_Click);
             // 
-            // saveFileDialog2
-            // 
-            this.saveFileDialog2.CreatePrompt = true;
-            this.saveFileDialog2.DefaultExt = "txt";
-            this.saveFileDialog2.RestoreDirectory = true;
-            this.saveFileDialog2.SupportMultiDottedExtensions = true;
-            // 
             // FormWork
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -298,7 +294,6 @@ namespace CaesarCipher
         private System.Windows.Forms.TextBox textBoxInput;
         private System.Windows.Forms.TextBox textBoxOutput;
         private System.Windows.Forms.Button buttonOpenEncryptText;
-        private System.Windows.Forms.SaveFileDialog saveFileDialog2;
     }
 }
 
