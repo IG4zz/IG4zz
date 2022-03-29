@@ -6,7 +6,7 @@ namespace CaesarCipher
     static class Program
     {
         /// <summary>
-        /// Основная точка входа в программу
+        /// The main entry point for the application.
         /// </summary>
         [STAThread]
         static void Main()
