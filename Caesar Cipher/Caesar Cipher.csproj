@@ -7,6 +7,13 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ApplicationIcon>1792193.ico</ApplicationIcon>
     <StartupObject></StartupObject>
+    <Win32Resource />
   </PropertyGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
 
 </Project>

@@ -168,12 +168,11 @@ namespace CaesarCipher
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void buttonHelp_KeyDown(object sender, KeyEventArgs e)
+        private void FormWork_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
             if (e.KeyCode == Keys.F1)
             {
-                buttonHelp.Select();
-                buttonHelp_Click(buttonHelp, null);
+                buttonHelp.PerformClick();
             }
         }
 
@@ -364,6 +363,17 @@ namespace CaesarCipher
             {
                 MessageBox.Show("Текстовый документ отсутствует", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        /// <summary>
+        /// Клик по основному окну
+        /// Снимает фокус со всех элементов управления
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void FormWork_Click(object sender, EventArgs e)
+        {
+            this.ActiveControl = null;
         }
     }
 }

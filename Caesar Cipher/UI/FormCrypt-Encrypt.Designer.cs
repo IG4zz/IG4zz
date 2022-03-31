@@ -58,6 +58,7 @@ namespace CaesarCipher
             this.buttonEncrypt.Name = "buttonEncrypt";
             this.buttonEncrypt.Size = new System.Drawing.Size(101, 23);
             this.buttonEncrypt.TabIndex = 0;
+            this.buttonEncrypt.TabStop = false;
             this.buttonEncrypt.Text = "Зашифровать";
             this.buttonEncrypt.UseVisualStyleBackColor = true;
             this.buttonEncrypt.Click += new System.EventHandler(this.buttonEncrypt_Click);
@@ -68,6 +69,7 @@ namespace CaesarCipher
             this.buttonDecrypt.Name = "buttonDecrypt";
             this.buttonDecrypt.Size = new System.Drawing.Size(101, 23);
             this.buttonDecrypt.TabIndex = 1;
+            this.buttonDecrypt.TabStop = false;
             this.buttonDecrypt.Text = "Дешифровать";
             this.buttonDecrypt.UseVisualStyleBackColor = true;
             this.buttonDecrypt.Click += new System.EventHandler(this.buttonDecrypt_Click);
@@ -78,6 +80,7 @@ namespace CaesarCipher
             this.textBoxKey.Name = "textBoxKey";
             this.textBoxKey.Size = new System.Drawing.Size(56, 23);
             this.textBoxKey.TabIndex = 2;
+            this.textBoxKey.TabStop = false;
             // 
             // labelKey
             // 
@@ -96,6 +99,7 @@ namespace CaesarCipher
             this.textBoxDecryptText.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.textBoxDecryptText.Size = new System.Drawing.Size(292, 168);
             this.textBoxDecryptText.TabIndex = 4;
+            this.textBoxDecryptText.TabStop = false;
             // 
             // textBoxEncryptText
             // 
@@ -105,6 +109,7 @@ namespace CaesarCipher
             this.textBoxEncryptText.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.textBoxEncryptText.Size = new System.Drawing.Size(298, 171);
             this.textBoxEncryptText.TabIndex = 5;
+            this.textBoxEncryptText.TabStop = false;
             // 
             // labelDecryptText
             // 
@@ -130,6 +135,7 @@ namespace CaesarCipher
             this.buttonExit.Name = "buttonExit";
             this.buttonExit.Size = new System.Drawing.Size(75, 23);
             this.buttonExit.TabIndex = 8;
+            this.buttonExit.TabStop = false;
             this.buttonExit.Text = "Выход";
             this.buttonExit.UseVisualStyleBackColor = true;
             this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
@@ -140,10 +146,10 @@ namespace CaesarCipher
             this.buttonHelp.Name = "buttonHelp";
             this.buttonHelp.Size = new System.Drawing.Size(75, 23);
             this.buttonHelp.TabIndex = 9;
+            this.buttonHelp.TabStop = false;
             this.buttonHelp.Text = "Справка";
             this.buttonHelp.UseVisualStyleBackColor = true;
             this.buttonHelp.Click += new System.EventHandler(this.buttonHelp_Click);
-            this.buttonHelp.KeyDown += new System.Windows.Forms.KeyEventHandler(this.buttonHelp_KeyDown);
             // 
             // buttonSaveEncryptText
             // 
@@ -151,6 +157,7 @@ namespace CaesarCipher
             this.buttonSaveEncryptText.Name = "buttonSaveEncryptText";
             this.buttonSaveEncryptText.Size = new System.Drawing.Size(75, 23);
             this.buttonSaveEncryptText.TabIndex = 10;
+            this.buttonSaveEncryptText.TabStop = false;
             this.buttonSaveEncryptText.Text = "Сохранить";
             this.buttonSaveEncryptText.UseVisualStyleBackColor = true;
             this.buttonSaveEncryptText.Click += new System.EventHandler(this.buttonSaveEncryptText_Click_1);
@@ -177,6 +184,7 @@ namespace CaesarCipher
             this.buttonClearEncryptText.Name = "buttonClearEncryptText";
             this.buttonClearEncryptText.Size = new System.Drawing.Size(107, 23);
             this.buttonClearEncryptText.TabIndex = 11;
+            this.buttonClearEncryptText.TabStop = false;
             this.buttonClearEncryptText.Text = "Очистить поле";
             this.buttonClearEncryptText.UseVisualStyleBackColor = true;
             this.buttonClearEncryptText.Click += new System.EventHandler(this.buttonClearEncryptText_Click);
@@ -187,6 +195,7 @@ namespace CaesarCipher
             this.buttonClearDecryptText.Name = "buttonClearDecryptText";
             this.buttonClearDecryptText.Size = new System.Drawing.Size(107, 23);
             this.buttonClearDecryptText.TabIndex = 12;
+            this.buttonClearDecryptText.TabStop = false;
             this.buttonClearDecryptText.Text = "Очистить поле";
             this.buttonClearDecryptText.UseVisualStyleBackColor = true;
             this.buttonClearDecryptText.Click += new System.EventHandler(this.buttonClearDecryptText_Click);
@@ -197,6 +206,7 @@ namespace CaesarCipher
             this.buttonSaveDecryptText.Name = "buttonSaveDecryptText";
             this.buttonSaveDecryptText.Size = new System.Drawing.Size(75, 23);
             this.buttonSaveDecryptText.TabIndex = 13;
+            this.buttonSaveDecryptText.TabStop = false;
             this.buttonSaveDecryptText.Text = "Сохранить";
             this.buttonSaveDecryptText.UseVisualStyleBackColor = true;
             this.buttonSaveDecryptText.Click += new System.EventHandler(this.buttonSaveDecryptText_Click);
@@ -207,6 +217,7 @@ namespace CaesarCipher
             this.buttonOpenDecryptText.Name = "buttonOpenDecryptText";
             this.buttonOpenDecryptText.Size = new System.Drawing.Size(75, 23);
             this.buttonOpenDecryptText.TabIndex = 14;
+            this.buttonOpenDecryptText.TabStop = false;
             this.buttonOpenDecryptText.Text = "Открыть";
             this.buttonOpenDecryptText.UseVisualStyleBackColor = true;
             this.buttonOpenDecryptText.Click += new System.EventHandler(this.buttonOpenDecryptText_Click);
@@ -233,6 +244,7 @@ namespace CaesarCipher
             this.buttonOpenEncryptText.Name = "buttonOpenEncryptText";
             this.buttonOpenEncryptText.Size = new System.Drawing.Size(75, 23);
             this.buttonOpenEncryptText.TabIndex = 17;
+            this.buttonOpenEncryptText.TabStop = false;
             this.buttonOpenEncryptText.Text = "Открыть";
             this.buttonOpenEncryptText.UseVisualStyleBackColor = true;
             this.buttonOpenEncryptText.Click += new System.EventHandler(this.buttonOpenEncryptText_Click);
@@ -267,6 +279,8 @@ namespace CaesarCipher
             this.Name = "FormWork";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Шифратор";
+            this.Click += new System.EventHandler(this.FormWork_Click);
+            this.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.FormWork_PreviewKeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 
